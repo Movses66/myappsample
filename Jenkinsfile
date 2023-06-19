@@ -6,7 +6,7 @@ pipeline {
                 echo 'building the application...'
             }
         }
-        staeg("test"){
+        stage("test"){
             steps{
                 echo 'testing the application...'
             }
