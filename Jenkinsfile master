@@ -22,7 +22,7 @@ pipeline {
       agent {
         docker {
           label 'my-docker-agent'
-          image 'your-docker-image:tag'
+          image 'd688977ba8f6f675a75f6291be6c98ffd034900c989b8d5531bd3cddca457b8c'
           args '-v /path/on/host:/path/on/container'
           reuseNode true
         }
@@ -40,7 +40,7 @@ pipeline {
       agent {
         docker {
           label 'my-docker-agent'
-          image 'your-docker-image:tag'
+          image 'd688977ba8f6f675a75f6291be6c98ffd034900c989b8d5531bd3cddca457b8c'
           args '-v /path/on/host:/path/on/container'
           reuseNode true
         }
