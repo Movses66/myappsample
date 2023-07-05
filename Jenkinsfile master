@@ -1,55 +1,21 @@
 pipeline {
-  agent none
+    agent any
 
-  stages {
-    stage('Build') {
-      agent {
-        docker {
-          label 'my-docker-agent'
-          image 'd688977ba8f6f675a75f6291be6c98ffd034900c989b8d5531bd3cddca457b8c' // Specify the Docker image for your job
-          args '-v /path/on/host:/path/on/container' // Mount a volume if needed
-          reuseNode true // Reuse the agent node for subsequent stages
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+            }
         }
-      }
-      steps {
-        // Your build steps here
-        sh 'echo "Building inside Docker container"'
-        sh 'make build' // Example build command
-      }
-    }
-    
-    stage('Test') {
-      agent {
-        docker {
-          label 'my-docker-agent'
-          image 'd688977ba8f6f675a75f6291be6c98ffd034900c989b8d5531bd3cddca457b8c'
-          args '-v /path/on/host:/path/on/container'
-          reuseNode true
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
         }
-      }
-      steps {
-        // Your test steps here
-        sh 'echo "Testing inside Docker container"'
-        sh 'make test' // Example test command
-      }
-    }
-    
-    // Add more stages as needed
-    
-    stage('Deploy') {
-      agent {
-        docker {
-          label 'my-docker-agent'
-          image 'd688977ba8f6f675a75f6291be6c98ffd034900c989b8d5531bd3cddca457b8c'
-          args '-v /path/on/host:/path/on/container'
-          reuseNode true
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
         }
-      }
-      steps {
-        // Your deployment steps here
-        sh 'echo "Deploying inside Docker container"'
-        sh 'make deploy' // Example deployment command
-      }
     }
-  }
 }
